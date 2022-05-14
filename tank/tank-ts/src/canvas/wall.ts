@@ -1,7 +1,7 @@
 import canvasAbstract from './canvasAbstract'
 import config from '../config'
 import model from '../model/wall'
-class Wall extends canvasAbstract {
+class Wall extends canvasAbstract implements CanvasModel {
   num(): number {
     return config.wall.num
   }

@@ -1,7 +1,7 @@
 import config from '../config'
 import CanvasAbstract from './canvasAbstract';
 import model from '../model/steel'
-class Steel extends CanvasAbstract {
+class Steel extends CanvasAbstract implements CanvasModel {
   num(): number {
     return config.steel.num
   }

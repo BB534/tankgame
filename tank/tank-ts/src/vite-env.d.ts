@@ -7,3 +7,9 @@ interface ModelConstructor {
 interface Model {
   render(): void
 }
+
+interface CanvasModel {
+  model(): ModelConstructor
+  num(): number
+}
+
