@@ -3,6 +3,8 @@ import position from '../service/position'
 abstract class CanvasAbstract {
   protected models: Model[] = []
   protected items = []
+  abstract num(): number
+  abstract model(): ModelConstructor
   abstract render(): void
   constructor(protected app = document.querySelector('#app') as HTMLDivElement, protected el = document.createElement('canvas'), protected canvas = el.getContext('2d')!) {
     this.createCanvas()
@@ -14,8 +16,9 @@ abstract class CanvasAbstract {
     this.app.insertAdjacentElement('afterbegin', this.el)
   }
   // 绘制贴图方法
-  protected createModels(num: number, model: ModelConstructor) {
-    position.Getposition(num).forEach((position) => {
+  protected createModels() {
+    position.Getposition(this.num()).forEach((position) => {
+      const model = this.model()
       const instance = new model(this.canvas, position.x, position.y)
       this.models.push(instance)
     })

@@ -1,9 +1,9 @@
-import CanvasAbstract from './canvasAbstract'
 import config from '../config'
-import model from '../model/straw'
-class Straw extends CanvasAbstract {
+import CanvasAbstract from './canvasAbstract';
+import model from '../model/steel'
+class Steel extends CanvasAbstract {
   num(): number {
-    return config.straw.num
+    return config.steel.num
   }
   model(): ModelConstructor {
     return model
@@ -14,4 +14,4 @@ class Straw extends CanvasAbstract {
   }
 }
 
-export default new Straw()
+export default new Steel()

@@ -2,11 +2,16 @@ import canvasAbstract from './canvasAbstract'
 import config from '../config'
 import model from '../model/wall'
 class Wall extends canvasAbstract {
-  constructor() {
-    super()
-    super.createModels(config.wall.num, model)
+  num(): number {
+    return config.wall.num
   }
+  model(): ModelConstructor {
+    return model
+  }
+
+
   render(): void {
+    super.createModels()
     super.renderModels()
   }
 }
