@@ -25,6 +25,7 @@ abstract class CanvasAbstract {
   }
   // 渲染模型到画布上
   protected renderModels() {
+    // this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height)
     this.models.forEach(model => {
       model.render()
     })

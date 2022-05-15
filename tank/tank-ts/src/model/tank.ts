@@ -9,20 +9,35 @@ export default class extends ModelAbstract implements Model {
     this.move()
   }
   move(): void {
-    switch (this.direaction) {
-      case direactionEnum.top:
-        this.y--
+    while (true) {
+      let x = this.x
+      let y = this.y
+      switch (this.direaction) {
+        case direactionEnum.top:
+          y--
+          break;
+        case direactionEnum.right:
+          x++
+          break;
+        case direactionEnum.bottom:
+          y++
+          break;
+        case direactionEnum.left:
+          x--
+          break;
+      }
+      if (this.isTouch(x, y) === true) {
+        this.randomDireaction()
+      } else {
+        this.x = x
+        this.y = y
         break;
-      case direactionEnum.right:
-        this.x++
-        break;
-      case direactionEnum.bottom:
-        this.y++
-        break;
-      case direactionEnum.left:
-        this.x--
-        break;
+      }
     }
+    super.draw()
+  }
+  protected isTouch(x: number, y: number) {
+    return x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height
   }
   image(): HTMLImageElement {
     let direaction = 'tank' + _.upperFirst(this.direaction)
