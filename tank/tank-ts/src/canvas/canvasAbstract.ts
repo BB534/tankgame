@@ -23,7 +23,7 @@ abstract class CanvasAbstract {
       this.models.push(instance)
     })
   }
-  // 渲染模型
+  // 渲染模型到画布上
   protected renderModels() {
     this.models.forEach(model => {
       model.render()

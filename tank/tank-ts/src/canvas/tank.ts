@@ -11,7 +11,16 @@ class Tank extends CanvasAbstract implements CanvasModel {
   }
   render(): void {
     this.createModels()
-    super.renderModels()
+    this.renderModels()
+    setInterval(() => this.renderModels(), config.timeout)
+  }
+  // 重写自己坦克自己的模型渲染
+  protected renderModels() {
+    this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height)
+    this.models.forEach(model => {
+      model.render()
+      this.canvas.drawImage(model.image(), model.x, model.y, config.model.width, config.model.height)
+    })
   }
   // 重写坦克自己生成的逻辑
   protected createModels(): void {
