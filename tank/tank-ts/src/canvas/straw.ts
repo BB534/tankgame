@@ -1,7 +1,7 @@
 import CanvasAbstract from './canvasAbstract'
 import config from '../config'
 import model from '../model/straw'
-class Straw extends CanvasAbstract implements CanvasModel {
+export default new class extends CanvasAbstract implements CanvasModel {
   num(): number {
     return config.straw.num
   }
@@ -12,5 +12,5 @@ class Straw extends CanvasAbstract implements CanvasModel {
     super.createModels()
     super.renderModels()
   }
-}
-export default new Straw()
+}('straw')
+

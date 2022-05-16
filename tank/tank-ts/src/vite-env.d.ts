@@ -4,9 +4,15 @@ interface ModelConstructor {
   new(x: number, y: number): Model
 }
 
+interface BulletModelConstructor {
+  new(tank: Model): Model
+}
+
 interface Model {
   render(): void
   image(): HTMLImageElement
+  tank?: Model
+  direaction?: string
   x: number
   y: number
   width: number
@@ -14,7 +20,7 @@ interface Model {
 }
 
 interface CanvasModel {
-  model(): ModelConstructor
+  model(): ModelConstructor | BulletModelConstructor
   num(): number
   ctx: CanvasRenderingContext2D
 }

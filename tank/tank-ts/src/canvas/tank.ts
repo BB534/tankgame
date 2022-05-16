@@ -2,7 +2,7 @@ import config from '../config'
 import CanvasAbstract from './canvasAbstract';
 import model from '../model/tank'
 import position from '../service/position';
-class Tank extends CanvasAbstract implements CanvasModel {
+export default new class extends CanvasAbstract implements CanvasModel {
   num(): number {
     return config.tank.num
   }
@@ -32,6 +32,5 @@ class Tank extends CanvasAbstract implements CanvasModel {
     }
 
   }
-}
+}('tank')
 
-export default new Tank()

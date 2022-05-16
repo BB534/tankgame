@@ -6,7 +6,7 @@ abstract class ModelAbstract {
   abstract canvas: CanvasModel
   public width = config.model.width
   public height = config.model.height
-  protected direaction: direactionEnum = direactionEnum.bottom
+  public direaction: direactionEnum = direactionEnum.bottom
   constructor(public x: number, public y: number) {
     this.randomDireaction()
   }

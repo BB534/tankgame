@@ -1,7 +1,7 @@
 import config from '../config'
 import CanvasAbstract from './canvasAbstract';
 import model from '../model/water'
-class Water extends CanvasAbstract implements CanvasModel {
+export default new class extends CanvasAbstract implements CanvasModel {
   num(): number {
     return config.water.num
   }
@@ -12,6 +12,4 @@ class Water extends CanvasAbstract implements CanvasModel {
     super.createModels()
     super.renderModels()
   }
-}
-
-export default new Water()
+}('water')
