@@ -3,9 +3,7 @@ import { direactionEnum } from '../enum/direaction';
 import { image } from '../service/image'
 import _ from 'lodash'
 import config from '../config';
-import water from '../canvas/water';
-import wall from '../canvas/wall';
-import steel from '../canvas/steel';
+import utils from '../utils'
 import tank from '../canvas/tank'
 export default class extends ModelAbstract implements Model {
   canvas: CanvasModel = tank;
@@ -13,7 +11,7 @@ export default class extends ModelAbstract implements Model {
     super.draw()
     this.move()
     // 调大往下移动概率,防止在上方徘徊
-    if (_.random(20) === 1) this.direaction = direactionEnum.bottom
+    if (_.random(10) === 1) this.direaction = direactionEnum.bottom
 
   }
   move(): void {
@@ -34,7 +32,7 @@ export default class extends ModelAbstract implements Model {
           x--
           break;
       }
-      if (this.isTouch(x, y) === true) {
+      if (utils.isModelTouch(x, y) || utils.isCanvasTouch(x, y)) {
         this.randomDireaction()
       } else {
         this.x = x
@@ -43,22 +41,6 @@ export default class extends ModelAbstract implements Model {
       }
     }
     super.draw()
-  }
-  protected isTouch(x: number, y: number) {
-    // 画布碰撞检测
-    if (x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height) {
-      return true
-    }
-    const models = [...water.models, ...wall.models, ...steel.models]
-    return models.some((model) => {
-      // 如果坦克 x < 障碍模型左侧 > 模型右侧 那么就没有碰撞
-      // 如果坦克 y < 模型顶部 > 模型底部 那么就没有碰撞 
-      const state = x + this.width <= model.x || x >= model.x + model.width || y + this.height <= model.y || y >= model.y + model.height
-      return !state
-    })
-    // 模型碰撞检测
-
-    return false
   }
   image(): HTMLImageElement {
     let direaction = 'tank' + _.upperFirst(this.direaction)

@@ -8,7 +8,7 @@ import tankBottom from './static/images/tank/bottom.gif'
 import tankLeft from './static/images/tank/left.gif'
 import bullet from './static/images/bullet/bullet.jpg'
 export default {
-  timeout: 10,
+  timeout: 50,
   canvas: {
     width: 900,
     height: 500

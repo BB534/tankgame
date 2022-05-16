@@ -17,6 +17,10 @@ abstract class ModelAbstract {
   protected randomDireaction() {
     this.direaction = Object.keys(direactionEnum)[Math.floor(Math.random() * 4)] as direactionEnum
   }
+  public destroy() {
+    this.canvas.removeModel(this)
+    this.canvas.renderModels()
+  }
 }
 
 export default ModelAbstract

@@ -14,7 +14,9 @@ abstract class CanvasAbstract {
     this.el.width = config.canvas.width
     this.el.height = config.canvas.height
     this.el.setAttribute('name', this.name)
-    this.app.insertAdjacentElement('afterbegin', this.el)
+    // 修复层级问题
+    this.app.appendChild(this.el)
+    // this.app.insertAdjacentElement('afterbegin', this.el)
   }
   // 绘制贴图方法
   protected createModels() {
@@ -25,11 +27,14 @@ abstract class CanvasAbstract {
     })
   }
   // 渲染模型到画布上
-  protected renderModels() {
+  public renderModels() {
     this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height)
     this.models.forEach(model => {
       model.render()
     })
+  }
+  public removeModel(model: Model) {
+    this.models = this.models.filter(m => m !== model)
   }
 }
 

@@ -17,11 +17,14 @@ interface Model {
   y: number
   width: number
   height: number
+  destroy(): void
 }
 
 interface CanvasModel {
   model(): ModelConstructor | BulletModelConstructor
   num(): number
   ctx: CanvasRenderingContext2D
+  removeModel(model: Model)
+  renderModels(): void
 }
 
