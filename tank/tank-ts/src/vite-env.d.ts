@@ -9,6 +9,8 @@ interface Model {
   image(): HTMLImageElement
   x: number
   y: number
+  width: number
+  height: number
 }
 
 interface CanvasModel {

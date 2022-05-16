@@ -3,6 +3,9 @@ import { direactionEnum } from '../enum/direaction';
 import { image } from '../service/image'
 import _ from 'lodash'
 import config from '../config';
+import water from '../canvas/water';
+import wall from '../canvas/wall';
+import steel from '../canvas/steel';
 export default class extends ModelAbstract implements Model {
   render(): void {
     super.draw()
@@ -37,7 +40,18 @@ export default class extends ModelAbstract implements Model {
     super.draw()
   }
   protected isTouch(x: number, y: number) {
-    return x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height
+    // 画布碰撞检测
+    if (x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height) {
+      return true
+    }
+    const models = [...water.models, ...wall.models, ...steel.models]
+    return models.some((model) => {
+      const state = x + this.width <= model.x || x >= model.x + model.width || y + this.height <= model.y || y >= model.y + model.height
+      return !state
+    })
+    // 模型碰撞检测
+
+    return false
   }
   image(): HTMLImageElement {
     let direaction = 'tank' + _.upperFirst(this.direaction)

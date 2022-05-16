@@ -1,7 +1,7 @@
 import config from '../config'
 import position from '../service/position'
 abstract class CanvasAbstract {
-  protected models: Model[] = []
+  public models: Model[] = []
   protected items = []
   abstract num(): number
   abstract model(): ModelConstructor

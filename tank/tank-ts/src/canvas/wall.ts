@@ -9,7 +9,6 @@ class Wall extends canvasAbstract implements CanvasModel {
     return model
   }
 
-
   render(): void {
     super.createModels()
     super.renderModels()

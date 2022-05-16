@@ -7,7 +7,7 @@ import tankRight from './static/images/tank/right.gif'
 import tankBottom from './static/images/tank/bottom.gif'
 import tankLeft from './static/images/tank/left.gif'
 export default {
-  timeout: 50,
+  timeout: 10,
   canvas: {
     width: 900,
     height: 500
@@ -20,7 +20,7 @@ export default {
     num: 80
   },
   wall: {
-    num: 100
+    num: 30
   },
   water: {
     num: 30
