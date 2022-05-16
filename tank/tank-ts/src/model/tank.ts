@@ -6,7 +6,9 @@ import config from '../config';
 import water from '../canvas/water';
 import wall from '../canvas/wall';
 import steel from '../canvas/steel';
+import tank from '../canvas/tank'
 export default class extends ModelAbstract implements Model {
+  canvas: CanvasModel = tank;
   render(): void {
     super.draw()
     this.move()

@@ -3,14 +3,15 @@ import { direactionEnum } from '../enum/direaction';
 abstract class ModelAbstract {
   abstract render(): void
   abstract image(): HTMLImageElement
+  abstract canvas: CanvasModel
   public width = config.model.width
   public height = config.model.height
   protected direaction: direactionEnum = direactionEnum.bottom
-  constructor(public canvas: CanvasRenderingContext2D, public x: number, public y: number) {
+  constructor(public x: number, public y: number) {
     this.randomDireaction()
   }
   draw() {
-    this.canvas.drawImage(this.image(), this.x, this.y, config.model.width, config.model.height)
+    this.canvas.ctx.drawImage(this.image(), this.x, this.y, config.model.width, config.model.height)
   }
 
   protected randomDireaction() {

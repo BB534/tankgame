@@ -6,7 +6,7 @@ abstract class CanvasAbstract {
   abstract num(): number
   abstract model(): ModelConstructor
   abstract render(): void
-  constructor(protected app = document.querySelector('#app') as HTMLDivElement, protected el = document.createElement('canvas'), protected canvas = el.getContext('2d')!) {
+  constructor(protected app = document.querySelector('#app') as HTMLDivElement, protected el = document.createElement('canvas'), public ctx = el.getContext('2d')!) {
     this.createCanvas()
   }
   // 创建画布
@@ -19,7 +19,7 @@ abstract class CanvasAbstract {
   protected createModels() {
     position.Getposition(this.num()).forEach((position) => {
       const model = this.model()
-      const instance = new model(this.canvas, position.x, position.y)
+      const instance = new model(position.x, position.y)
       this.models.push(instance)
     })
   }

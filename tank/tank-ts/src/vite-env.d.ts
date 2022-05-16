@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 interface ModelConstructor {
-  new(canvas: CanvasRenderingContext2D, x: number, y: number): Model
+  new(x: number, y: number): Model
 }
 
 interface Model {
@@ -16,5 +16,6 @@ interface Model {
 interface CanvasModel {
   model(): ModelConstructor
   num(): number
+  ctx: CanvasRenderingContext2D
 }
 

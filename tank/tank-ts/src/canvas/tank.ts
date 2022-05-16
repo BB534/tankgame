@@ -16,10 +16,10 @@ class Tank extends CanvasAbstract implements CanvasModel {
   }
   // 重写自己坦克自己的模型渲染
   protected renderModels() {
-    this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height)
+    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height)
     this.models.forEach(model => {
       model.render()
-      this.canvas.drawImage(model.image(), model.x, model.y, config.model.width, config.model.height)
+      this.ctx.drawImage(model.image(), model.x, model.y, config.model.width, config.model.height)
     })
   }
   // 重写坦克自己生成的逻辑
@@ -27,7 +27,7 @@ class Tank extends CanvasAbstract implements CanvasModel {
     for (let i = 0; i < this.num(); i++) {
       const pos = position.position()
       const model = this.model()
-      const instance = new model(this.canvas, pos.x, 0)
+      const instance = new model(pos.x, 0)
       this.models.push(instance)
     }
 
