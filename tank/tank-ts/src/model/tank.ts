@@ -10,6 +10,9 @@ export default class extends ModelAbstract implements Model {
   render(): void {
     super.draw()
     this.move()
+    // 调大往下移动概率,防止在上方徘徊
+    if (_.random(20) === 1) this.direaction = direactionEnum.bottom
+
   }
   move(): void {
     while (true) {
@@ -46,6 +49,8 @@ export default class extends ModelAbstract implements Model {
     }
     const models = [...water.models, ...wall.models, ...steel.models]
     return models.some((model) => {
+      // 如果坦克 x < 障碍模型左侧 > 模型右侧 那么就没有碰撞
+      // 如果坦克 y < 模型顶部 > 模型底部 那么就没有碰撞 
       const state = x + this.width <= model.x || x >= model.x + model.width || y + this.height <= model.y || y >= model.y + model.height
       return !state
     })
