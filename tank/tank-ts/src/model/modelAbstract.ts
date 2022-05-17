@@ -2,6 +2,7 @@ import config from '../config'
 import { direactionEnum } from '../enum/direaction';
 abstract class ModelAbstract {
   abstract render(): void
+  abstract name: string
   abstract image(): HTMLImageElement
   abstract canvas: CanvasModel
   public width = config.model.width
@@ -20,6 +21,20 @@ abstract class ModelAbstract {
   public destroy() {
     this.canvas.removeModel(this)
     this.canvas.renderModels()
+  }
+  public blast(model: Model) {
+    Array(...Array(8).keys()).reduce((promise, item) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const img = new Image()
+          img.src = `src/static/images/blasts/blast${item}.gif`
+          img.onload = () => {
+            this.canvas.ctx.drawImage(img, model.x, model.y, model.width, model.height)
+            resolve(promise)
+          }
+        }, 100)
+      })
+    }, Promise.resolve())
   }
 }
 

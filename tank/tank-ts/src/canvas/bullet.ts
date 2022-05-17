@@ -26,7 +26,6 @@ export default new class extends canvasAbstract implements CanvasModel {
         this.models.push(new bullet(tank))
       }
     })
-    console.log(this.models)
   }
 }('bullet')
 

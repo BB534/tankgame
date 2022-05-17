@@ -9,6 +9,7 @@ interface BulletModelConstructor {
 }
 
 interface Model {
+  name: string
   render(): void
   image(): HTMLImageElement
   tank?: Model

@@ -15,7 +15,7 @@ export default new class extends CanvasAbstract implements CanvasModel {
     setInterval(() => this.renderModels(), config.timeout)
   }
   // 重写自己坦克自己的模型渲染
-  protected renderModels() {
+  public renderModels() {
     this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height)
     this.models.forEach(model => {
       model.render()

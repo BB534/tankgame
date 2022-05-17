@@ -6,7 +6,8 @@ import config from '../config';
 import utils from '../utils'
 import tank from '../canvas/tank'
 export default class extends ModelAbstract implements Model {
-  canvas: CanvasModel = tank;
+  name: string = 'tank'
+  canvas: CanvasModel = tank
   render(): void {
     super.draw()
     this.move()

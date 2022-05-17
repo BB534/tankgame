@@ -5,7 +5,9 @@ import config from '../config'
 import { direactionEnum } from '../enum/direaction'
 import utils from '../utils'
 import wall from '../canvas/wall'
+import steel from '../canvas/steel'
 export default class extends modelAbstract implements Model {
+  name: string = 'bullet'
   canvas: CanvasModel = bullet
   constructor(public tank: Model) {
     super(tank.x + config.model.width / 2, tank.y + config.model.height / 2)
@@ -33,15 +35,19 @@ export default class extends modelAbstract implements Model {
         x -= 2
         break
     }
-    const tocuhModel = utils.isModelTouch(x, y, 2, 2, [...wall.models])
-    if (utils.isCanvasTouch(x, y, 2, 2)) {
+    const tocuhModel = utils.isModelTouch(x, y, 2, 2, [...wall.models, ...steel.models])
+    if (utils.isCanvasTouch(x, y, 2, 2,)) {
       // 到画布边缘移除
       this.destroy()
     } else if (
       tocuhModel
     ) {
       this.destroy()
-      tocuhModel.destroy()
+      if (tocuhModel.name !== 'steel') {
+
+        tocuhModel.destroy()
+      }
+      this.blast(tocuhModel)
     } else {
       this.x = x
       this.y = y
