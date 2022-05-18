@@ -13,7 +13,7 @@ import playTop from './static/images/player/top.gif'
 import playLeft from './static/images/player/left.gif'
 import playRight from './static/images/player/right.gif'
 export default {
-  timeout: 50,
+  timeout: 100,
   playMove: 10,
   canvas: {
     width: 900,

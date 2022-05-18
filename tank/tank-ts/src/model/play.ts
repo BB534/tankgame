@@ -22,7 +22,7 @@ export default class extends ModelAbstract implements Model {
           bullet.addPlayBullet()
         }
       }
-      let playBuller = _.throttle(thFn, 500)
+      let playBuller = _.throttle(thFn, 300)
       document.addEventListener('keydown', this.changeDireaction.bind(this))
       document.addEventListener('keydown', this.move.bind(this))
       document.addEventListener('keydown', playBuller)
