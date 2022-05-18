@@ -7,6 +7,7 @@ import steel from './canvas/steel'
 import tank from './canvas/tank'
 import bullet from './canvas/bullet'
 import boss from './canvas/boss'
+import play from './canvas/play'
 import { promise } from './service/image'
 const app = document.querySelector<HTMLDivElement>('#app')!
 app.style.width = config.canvas.width + 'px'
@@ -22,5 +23,6 @@ async function bootstrap() {
   tank.render()
   bullet.render()
   boss.render()
+  play.render()
 }
 void bootstrap()

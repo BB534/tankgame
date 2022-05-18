@@ -8,8 +8,13 @@ import tankBottom from './static/images/tank/bottom.gif'
 import tankLeft from './static/images/tank/left.gif'
 import bullet from './static/images/bullet/bullet.jpg'
 import boss from './static/images/boss/boss.png'
+import playBottom from './static/images/player/bottom.gif'
+import playTop from './static/images/player/top.gif'
+import playLeft from './static/images/player/left.gif'
+import playRight from './static/images/player/right.gif'
 export default {
   timeout: 50,
+  playMove: 10,
   canvas: {
     width: 900,
     height: 500
@@ -36,6 +41,9 @@ export default {
   boss: {
     num: 1
   },
+  play: {
+    num: 30
+  },
   images: {
     straw,
     wall,
@@ -46,6 +54,10 @@ export default {
     tankBottom,
     tankLeft,
     bullet,
-    boss
+    boss,
+    playBottom,
+    playLeft,
+    playRight,
+    playTop
   }
 }

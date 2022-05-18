@@ -6,6 +6,7 @@ import { direactionEnum } from '../enum/direaction'
 import utils from '../utils'
 import wall from '../canvas/wall'
 import steel from '../canvas/steel'
+import boss from '../canvas/boss'
 export default class extends modelAbstract implements Model {
   name: string = 'bullet'
   canvas: CanvasModel = bullet
@@ -35,7 +36,7 @@ export default class extends modelAbstract implements Model {
         x -= 2
         break
     }
-    const tocuhModel = utils.isModelTouch(x, y, 2, 2, [...wall.models, ...steel.models])
+    const tocuhModel = utils.isModelTouch(x, y, 2, 2, [...wall.models, ...steel.models, ...boss.models])
     if (utils.isCanvasTouch(x, y, 2, 2,)) {
       // 到画布边缘移除
       this.destroy()
