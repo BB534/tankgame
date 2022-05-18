@@ -4,7 +4,9 @@ import model from '../model/bullet'
 import tank from './tank'
 import bullet from '../model/bullet'
 import play from './play'
+import audio from '../service/audio'
 export default new class extends canvasAbstract implements CanvasModel {
+  intervalId = 0
   num(): number {
     return 0
   }
@@ -15,7 +17,7 @@ export default new class extends canvasAbstract implements CanvasModel {
   render(): void {
     // super.createModels()
     // super.renderModels()
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.createBullet()
       super.renderModels()
     }, 50)
@@ -29,7 +31,11 @@ export default new class extends canvasAbstract implements CanvasModel {
     })
   }
   addPlayBullet() {
+    audio.aBuil()
     this.models.push(new bullet(play.models[0]))
+  }
+  stop() {
+    clearInterval(this.intervalId)
   }
 }('bullet')
 

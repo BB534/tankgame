@@ -1,5 +1,6 @@
 import config from '../config'
 import { direactionEnum } from '../enum/direaction';
+import audio from '../service/audio';
 abstract class ModelAbstract {
   abstract render(): void
   abstract name: string
@@ -30,6 +31,7 @@ abstract class ModelAbstract {
           img.src = `src/static/images/blasts/blast${item}.gif`
           img.onload = () => {
             this.canvas.ctx.drawImage(img, model.x, model.y, model.width, model.height)
+            audio.aBlast()
             resolve(promise)
           }
         }, 100)

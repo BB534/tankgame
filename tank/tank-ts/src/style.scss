@@ -6,8 +6,11 @@ body {
   justify-content: center;
   align-items: center;
   #app {
-
     background-color:#000;
+    // z-index: 9999;
+    background-image: url('./static/images/cover/cover.png');
+    background-position: center;
+    cursor: pointer;
     border: solid #fff 2px;
     position: relative;
     canvas {

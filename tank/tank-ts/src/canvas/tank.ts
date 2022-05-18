@@ -3,6 +3,7 @@ import CanvasAbstract from './canvasAbstract';
 import model from '../model/tank'
 import position from '../service/position';
 export default new class extends CanvasAbstract implements CanvasModel {
+  intervalId = 0
   num(): number {
     return config.tank.num
   }
@@ -12,7 +13,7 @@ export default new class extends CanvasAbstract implements CanvasModel {
   render(): void {
     this.createModels()
     this.renderModels()
-    setInterval(() => this.renderModels(), config.timeout)
+    this.intervalId = setInterval(() => this.renderModels(), config.timeout)
   }
   // 重写自己坦克自己的模型渲染
   public renderModels() {
@@ -31,6 +32,9 @@ export default new class extends CanvasAbstract implements CanvasModel {
       this.models.push(instance)
     }
 
+  }
+  public stop(): void {
+    clearInterval(this.intervalId)
   }
 }('tank')
 
