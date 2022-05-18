@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { direactionEnum } from '../enum/direaction';
 import config from '../config';
 import utils from '../utils';
+import bullet from '../canvas/bullet';
 export default class extends ModelAbstract implements Model {
   name: string = 'play'
   canvas: CanvasModel = play;
@@ -16,8 +17,15 @@ export default class extends ModelAbstract implements Model {
   render(): void {
     super.draw()
     if (this.bindEvent == false) {
+      let thFn = (event: KeyboardEvent) => {
+        if (event.code == 'Space') {
+          bullet.addPlayBullet()
+        }
+      }
+      let playBuller = _.throttle(thFn, 500)
       document.addEventListener('keydown', this.changeDireaction.bind(this))
       document.addEventListener('keydown', this.move.bind(this))
+      document.addEventListener('keydown', playBuller)
     }
   }
   changeDireaction(event: KeyboardEvent) {
@@ -61,4 +69,4 @@ export default class extends ModelAbstract implements Model {
     this.y = y
     this.canvas.renderModels()
   }
-}
+}  
